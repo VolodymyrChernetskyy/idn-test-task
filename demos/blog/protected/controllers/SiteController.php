@@ -91,4 +91,9 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	public function actionChatAjax()
+    {
+//       Yii::import('application.extensions.chat.ChatW');
+       ChatW::Ajax();
+    }
 }

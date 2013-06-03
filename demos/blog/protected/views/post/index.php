@@ -7,3 +7,8 @@
 	'itemView'=>'_view',
 	'template'=>"{items}\n{pager}",
 )); ?>
+<?php $this->widget('ChatW',array(
+		'id'=>'chat',
+		'model'=>'Chat',
+		'ajaxUrl'=>'/site/ChatAjax'
+		));?>

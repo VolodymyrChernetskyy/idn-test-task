@@ -16,9 +16,26 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.chat.ChatW',
 	),
 
 	'defaultController'=>'post',
+	'modules'=>array(
+		// uncomment the following to enable the Gii tool
+
+        
+		'gii'=>array(
+			'class'=>'system.gii.GiiModule',
+			'password'=>'1111',
+		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
+			'ipFilters'=>array('127.0.0.1','::1'),
+			'generatorPaths'=>array(
+				'bootstrap.gii', // since 0.9.1
+			),
+		),
+        
+		
+	),
 
 	// application components
 	'components'=>array(
@@ -43,6 +60,7 @@ return array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
+		
         'urlManager'=>array(
         	'urlFormat'=>'path',
         	'rules'=>array(
@@ -50,6 +68,7 @@ return array(
         		'posts/<tag:.*?>'=>'post/index',
         		'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
         	),
+			'showScriptName'=>false,
         ),
 		'log'=>array(
 			'class'=>'CLogRouter',
