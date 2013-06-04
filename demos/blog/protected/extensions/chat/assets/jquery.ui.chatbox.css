@@ -58,3 +58,19 @@
     white-space: -o-pre-wrap;   /* Opera 7 */
     word-wrap: break-word;      /* IE */
 }
+.togle-chat{
+	position: fixed;
+	height: 200px;
+	padding-top: 181px;
+	background: none repeat scroll 0 0 #CCCCCC;
+	right: 0;
+	bottom: 0;
+	text-align: center;
+	display: table;
+	width: 22px;
+	
+}
+.togle-chat.open{
+	right: 630px;
+	
+}

@@ -21,7 +21,7 @@
             user: null, // can be anything associated with this chatbox
             hidden: false,
             offset: 0, // relative to right edge of the browser window
-            width: 300, // width of the chatbox
+            width: 600, // width of the chatbox
             messageSent: function(id, user, msg, date) {
                 // override this
                 this.boxManager.addMsg(id,user, msg, date);
@@ -34,10 +34,11 @@
                 init: function(elem) {
                     this.elem = elem;
                 },
-                addMsg: function(peer, msg, date) {
+                addMsg: function(peer, msg, date, id_mdg) {
                     var self = this;
                     var box = self.elem.uiChatboxLog;
                     var e = document.createElement('li');
+					$(e).attr('id',id_mdg)
                     box.append(e);
                     $(e).hide();
 
@@ -61,11 +62,7 @@
                     $(e).fadeIn();
                     self._scrollToBottom();
 
-                    if (!self.elem.uiChatboxTitlebar.hasClass("ui-state-focus")
-                        && !self.highlightLock) {
-                        self.highlightLock = true;
-                        self.highlightBox();
-                    }
+                   
                 },
                 highlightBox: function() {
                     var self = this;
@@ -77,6 +74,7 @@
                 },
                 toggleBox: function() {
                     this.elem.uiChatbox.toggle();
+					
                 },
                 _scrollToBottom: function() {
                     var box = this.elem.uiChatboxLog;
@@ -143,7 +141,7 @@
             uiChatboxTitlebarCloseText = $('<span></span>')
                 .addClass('ui-icon ' +
                           'ui-icon-closethick')
-                .text('close')
+                .text('')
                 .appendTo(uiChatboxTitlebarClose),
             uiChatboxTitlebarMinimize = (self.uiChatboxTitlebarMinimize = $('<a href="#"></a>'))
                 .addClass('ui-corner-all ' +
@@ -160,7 +158,7 @@
             uiChatboxTitlebarMinimizeText = $('<span></span>')
                 .addClass('ui-icon ' +
                           'ui-icon-minusthick')
-                .text('minimize')
+                .text('')
                 .appendTo(uiChatboxTitlebarMinimize),
             // content
             uiChatboxContent = (self.uiChatboxContent = $('<div></div>'))
@@ -181,7 +179,7 @@
                     // anything?
                 })
                 .appendTo(uiChatboxContent),
-            uiChatboxInputBox = (self.uiChatboxInputBox = $('<textarea></textarea>'))
+            uiChatboxInputBox = (self.uiChatboxInputBox = $('<textarea maxlength="100"></textarea>'))
                 .addClass('ui-widget-content ' +
                           'ui-chatbox-input-box ' +
                           'ui-corner-all'
