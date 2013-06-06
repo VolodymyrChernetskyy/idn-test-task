@@ -93,7 +93,7 @@ class SiteController extends Controller
 	}
 	public function actionChatAjax()
     {
-//       Yii::import('application.extensions.chat.ChatW');
+       Yii::import('application.extensions.chat.ChatW');
        ChatW::Ajax();
     }
 }

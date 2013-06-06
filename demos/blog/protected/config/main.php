@@ -16,7 +16,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		'ext.chat.ChatW',
+		
 	),
 
 	'defaultController'=>'post',

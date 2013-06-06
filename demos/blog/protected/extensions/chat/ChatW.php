@@ -1,13 +1,39 @@
+/*
+* Simlpe chat widget 
+* js lib jquery.ui.chatbox.js
+* for use 
+* this->widget('ChatW',array(
+*		'id'=>'chat id',
+*		'model'=>'model',- model must be have fields : id, username, message, created
+*		'ajaxUrl'=>'/site/ChatAjax' - ajax action
+*		));
+*
+*
+* in controller 
+* public function actionChatAjax()
+* {
+* 	Yii::import('application.extensions.chat.ChatW');
+*    ChatW::Ajax();
+* }
+*
+*
+*/
 <?php class ChatW extends CInputWidget
 {
+
 	private $baseUrl;
-                    
     public $id='chat';
     public $model;
 	public $ajaxUrl;
   
     public function run()
     {
+		/**
+		* 
+		* register js
+		* 
+		*/
+		
 	    $dir = dirname(__FILE__);
         $this->baseUrl = Yii::app()->getAssetManager()->publish($dir);
     	$cs = Yii::app()->getClientScript();
@@ -75,7 +101,7 @@
 			}
 		} 
 	';
-   $cs->registerScript('cahat', $script);
+   $cs->registerScript('chat', $script);
     }
 	
 	static function Ajax()
